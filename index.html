@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智家电器 - 全球领先的小家电制造商</title>
+    <meta name="description" content="Smart Appliance - Global leading small home appliance manufacturer, providing high-quality smart coffee machines, air fryers and other products">
+    <meta name="keywords" content="智能家电,小家电,智能咖啡机,空气炸锅,智能电器">
+    <meta name="author" content="智家电器">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    <title>Smart Appliance - Global Leading Small Home Appliance Manufacturer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,11 +39,89 @@
     }
     </script>
     <style>
+        /* 基本样式 */
         body {
-            min-height: 1024px;
-            width: 1440px;
+            min-height: 100vh;
+            width: 100%;
             margin: 0 auto;
+            overflow-x: hidden;
         }
+        
+        /* 桌面菜单样式 */
+        .desktop-menu {
+            display: flex;
+        }
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        /* 移动菜单默认状态 */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            z-index: 40;
+        }
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+        
+        /* 平板和移动端样式 */
+        @media (max-width: 1024px) {
+            .grid-cols-4 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .grid-cols-6 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            .desktop-menu {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+            }
+        }
+        
+        /* 小屏幕样式 */
+        @media (max-width: 768px) {
+            .grid-cols-3 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            .grid-cols-2 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            .grid-cols-6 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .hero-content {
+                width: 100% !important;
+                padding: 0 1rem;
+                text-align: center;
+            }
+        }
+        
+        /* 淡入效果 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 导航链接效果 */
         .nav-link {
             position: relative;
         }
@@ -68,39 +150,99 @@
         .brand-logo:hover {
             filter: grayscale(0%);
         }
+        .lang-dropdown {
+            position: relative;
+        }
+        .lang-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: white;
+            border-radius: 0.25rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            width: 120px;
+            display: none;
+            z-index: 50;
+        }
+        .lang-menu.active {
+            display: block;
+        }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            color: #374151;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .lang-option:hover {
+            background-color: #F3F4F6;
+        }
+        .lang-option.active {
+            color: #3B82F6;
+            background-color: #EFF6FF;
+        }
     </style>
 </head>
 <body>
     <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
-        <nav class="flex items-center justify-between px-8 py-4 max-w-[1440px] mx-auto">
+        <nav class="flex items-center justify-between px-8 py-4 max-w-[1440px] w-full mx-auto">
             <div class="flex items-center">
                 <a href="/" class="text-3xl font-['Pacifico'] text-primary">logo</a>
             </div>
-            <div class="flex items-center space-x-8">
+            <div class="desktop-menu flex items-center space-x-8">
                 <a href="#products" class="nav-link text-gray-600 hover:text-primary">产品系列</a>
                 <a href="#about" class="nav-link text-gray-600 hover:text-primary">关于我们</a>
                 <a href="#news" class="nav-link text-gray-600 hover:text-primary">新闻中心</a>
                 <a href="#contact" class="nav-link text-gray-600 hover:text-primary">联系方式</a>
             </div>
             <div class="flex items-center space-x-4">
-                <div class="relative">
+                <div class="relative hidden md:block">
                     <input type="text" placeholder="搜索产品..." class="pl-10 pr-4 py-2 border border-gray-200 rounded-button focus:outline-none focus:border-primary text-sm">
                     <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
                 </div>
-                <button class="!rounded-button px-4 py-2 bg-primary text-white hover:bg-primary/90 whitespace-nowrap">
-                    <i class="fas fa-globe mr-2"></i>
-                    中文
+                <div class="lang-dropdown">
+                    <button id="langBtn" class="!rounded-button px-4 py-2 bg-primary text-white hover:bg-primary/90 whitespace-nowrap flex items-center" aria-label="切换语言">
+                        <i class="fas fa-globe mr-2"></i>
+                        <span id="currentLang">English</span>
+                        <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                    </button>
+                    <div id="langMenu" class="lang-menu">
+                        <div class="lang-option" data-lang="zh">
+                            <span>中文</span>
+                        </div>
+                        <div class="lang-option active" data-lang="en">
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn w-10 h-10 flex items-center justify-center" id="mobileMenuBtn" aria-label="打开菜单">
+                    <i class="fas fa-bars text-gray-600 text-xl"></i>
                 </button>
             </div>
         </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="flex flex-col space-y-4 py-2">
+                <a href="#products" class="text-gray-600 hover:text-primary py-2 border-b border-gray-100">产品系列</a>
+                <a href="#about" class="text-gray-600 hover:text-primary py-2 border-b border-gray-100">关于我们</a>
+                <a href="#news" class="text-gray-600 hover:text-primary py-2 border-b border-gray-100">新闻中心</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary py-2">联系方式</a>
+            </div>
+            <div class="mt-4 relative">
+                <input type="text" placeholder="搜索产品..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-button focus:outline-none focus:border-primary text-sm">
+                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
     </header>
 
     <main class="mt-[72px]">
         <section class="relative h-[600px] bg-gradient-to-r from-gray-50 to-white overflow-hidden">
             <div class="absolute inset-0 bg-[url('https://ai-public.mastergo.com/ai/img_res/8007c16769d1e0a993630c0d930df2d1.jpg')]
                 bg-cover bg-center opacity-90"></div>
-            <div class="relative flex items-center h-full max-w-7xl mx-auto px-8">
-                <div class="w-1/2">
+            <div class="relative flex items-center h-full max-w-[1440px] w-full mx-auto px-8">
+                <div class="hero-content w-1/2">
                     <h1 class="text-5xl font-bold text-gray-900 mb-6">智能科技 品质生活</h1>
                     <p class="text-xl text-gray-600 mb-8">致力于为全球用户提供高品质、智能化的小家电产品，让生活更简单、更美好。</p>
                     <button class="!rounded-button px-8 py-3 bg-primary text-white text-lg hover:bg-primary/90 whitespace-nowrap">
@@ -112,31 +254,31 @@
         </section>
 
         <section class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-8">
-                <h2 class="text-3xl font-bold text-center mb-16">我们的优势</h2>
+            <div class="max-w-[1440px] w-full mx-auto px-8">
+                <h2 class="text-3xl font-bold text-center mb-16" id="about">我们的优势</h2>
                 <div class="grid grid-cols-4 gap-8">
-                    <div class="text-center p-8 rounded-lg bg-gray-50">
+                    <div class="fade-in text-center p-8 rounded-lg bg-gray-50 hover:shadow-md transition-all duration-300">
                         <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-award text-primary text-2xl"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-4">品质保证</h3>
                         <p class="text-gray-600">严格的质量管控体系，获得多项国际认证，确保产品品质</p>
                     </div>
-                    <div class="text-center p-8 rounded-lg bg-gray-50">
+                    <div class="fade-in text-center p-8 rounded-lg bg-gray-50 hover:shadow-md transition-all duration-300">
                         <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-globe-americas text-primary text-2xl"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-4">全球配送</h3>
                         <p class="text-gray-600">完善的物流网络，覆盖 150+ 个国家和地区</p>
                     </div>
-                    <div class="text-center p-8 rounded-lg bg-gray-50">
+                    <div class="fade-in text-center p-8 rounded-lg bg-gray-50 hover:shadow-md transition-all duration-300">
                         <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-headset text-primary text-2xl"></i>
                         </div>
                         <h3 class="text-xl font-semibold mb-4">专业服务</h3>
                         <p class="text-gray-600">7×24 小时在线客服，专业技术支持团队</p>
                     </div>
-                    <div class="text-center p-8 rounded-lg bg-gray-50">
+                    <div class="fade-in text-center p-8 rounded-lg bg-gray-50 hover:shadow-md transition-all duration-300">
                         <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-lightbulb text-primary text-2xl"></i>
                         </div>
@@ -148,7 +290,7 @@
         </section>
 
         <section class="py-20 bg-gray-50" id="products">
-            <div class="max-w-7xl mx-auto px-8">
+            <div class="max-w-[1440px] w-full mx-auto px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl font-bold mb-4">产品系列</h2>
                     <p class="text-gray-600">为您提供多样化的智能家电解决方案</p>
@@ -162,10 +304,10 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="fade-in bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="h-[300px] overflow-hidden">
                             <img src="https://ai-public.mastergo.com/ai/img_res/15d4358a161fab7c33c035e91856da89.jpg" 
-                                class="w-full h-full object-cover object-top" alt="智能咖啡机">
+                                loading="lazy" class="w-full h-full object-cover object-top" alt="智能咖啡机">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">智能咖啡机 Pro</h3>
@@ -176,10 +318,10 @@
                             </button>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="fade-in bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="h-[300px] overflow-hidden">
                             <img src="https://ai-public.mastergo.com/ai/img_res/ea82285843d77c417a3433354c3a4bf3.jpg" 
-                                class="w-full h-full object-cover object-top" alt="空气炸锅">
+                                loading="lazy" class="w-full h-full object-cover object-top" alt="空气炸锅">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">智能空气炸锅</h3>
@@ -190,10 +332,10 @@
                             </button>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="fade-in bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="h-[300px] overflow-hidden">
                             <img src="https://ai-public.mastergo.com/ai/img_res/63e192b9ce7460fd270203bb653d3fd5.jpg" 
-                                class="w-full h-full object-cover object-top" alt="料理机">
+                                loading="lazy" class="w-full h-full object-cover object-top" alt="料理机">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">多功能料理机</h3>
@@ -209,7 +351,63 @@
         </section>
 
         <section class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-8">
+            <div class="max-w-[1440px] w-full mx-auto px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4" id="news">新闻中心</h2>
+                    <p class="text-gray-600">了解最新企业动态和行业资讯</p>
+                </div>
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="fade-in bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                        <div class="h-[200px] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/04fcef01eb7f85d97da1c385e5c94c98.jpg" 
+                                loading="lazy" class="w-full h-full object-cover" alt="公司新闻">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 mb-2">2024-06-10</div>
+                            <h3 class="text-xl font-semibold mb-2">智家电器荣获年度创新企业奖项</h3>
+                            <p class="text-gray-600 mb-4">凭借在智能家电领域的突出贡献和创新成果，我司荣获2024年度创新企业奖</p>
+                            <a href="#" class="text-primary hover:text-primary/80">
+                                阅读更多
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="fade-in bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                        <div class="h-[200px] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/58bff7a8a99c20b15ff3bf09c7ae5e9c.jpg" 
+                                loading="lazy" class="w-full h-full object-cover" alt="行业新闻">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 mb-2">2024-05-28</div>
+                            <h3 class="text-xl font-semibold mb-2">参与制定小家电行业标准</h3>
+                            <p class="text-gray-600 mb-4">我司技术专家参与制定新一代小家电能效标准，引领行业绿色发展</p>
+                            <a href="#" class="text-primary hover:text-primary/80">
+                                阅读更多
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="fade-in bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                        <div class="h-[200px] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/c10d5f0da1d81d4da84f0e12adbec3c5.jpg" 
+                                loading="lazy" class="w-full h-full object-cover" alt="产品新闻">
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 mb-2">2024-05-15</div>
+                            <h3 class="text-xl font-semibold mb-2">全新智能厨房系列产品发布</h3>
+                            <p class="text-gray-600 mb-4">智家电器发布全新一代智能厨房系列产品，搭载AI烹饪技术</p>
+                            <a href="#" class="text-primary hover:text-primary/80">
+                                阅读更多
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="max-w-[1440px] w-full mx-auto px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl font-bold mb-4">公司实力</h2>
                     <p class="text-gray-600">持续创新，追求卓越</p>
@@ -237,49 +435,49 @@
         </section>
 
         <section class="py-20 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-8">
+            <div class="max-w-[1440px] w-full mx-auto px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl font-bold mb-4">合作伙伴</h2>
                     <p class="text-gray-600">携手共创美好未来</p>
                 </div>
                 <div class="grid grid-cols-6 gap-8">
-                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                    <div class="fade-in brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
                         <img src="https://ai-public.mastergo.com/ai/img_res/21da20ed78987cce97ce0532c20ba942.jpg" 
-                            alt="合作伙伴" class="max-w-full h-auto">
+                            loading="lazy" alt="合作伙伴" class="max-w-full h-auto">
                     </div>
-                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                    <div class="fade-in brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
                         <img src="https://ai-public.mastergo.com/ai/img_res/37a4050c1726970e55924271bd722d83.jpg" 
-                            alt="合作伙伴" class="max-w-full h-auto">
+                            loading="lazy" alt="合作伙伴" class="max-w-full h-auto">
                     </div>
-                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                    <div class="fade-in brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
                         <img src="https://ai-public.mastergo.com/ai/img_res/4c7beb79b6d218d8d88eb5dee2602f85.jpg" 
-                            alt="合作伙伴" class="max-w-full h-auto">
+                            loading="lazy" alt="合作伙伴" class="max-w-full h-auto">
                     </div>
-                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                    <div class="fade-in brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
                         <img src="https://ai-public.mastergo.com/ai/img_res/99c501eddede0ae388a0660be5f7ae35.jpg" 
-                            alt="合作伙伴" class="max-w-full h-auto">
+                            loading="lazy" alt="合作伙伴" class="max-w-full h-auto">
                     </div>
-                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                    <div class="fade-in brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
                         <img src="https://ai-public.mastergo.com/ai/img_res/5d5656428bf836ac2ff744af30f85257.jpg" 
-                            alt="合作伙伴" class="max-w-full h-auto">
+                            loading="lazy" alt="合作伙伴" class="max-w-full h-auto">
                     </div>
-                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                    <div class="fade-in brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
                         <img src="https://ai-public.mastergo.com/ai/img_res/7d9db0869d9bdde15174a2b9158f1a72.jpg" 
-                            alt="合作伙伴" class="max-w-full h-auto">
+                            loading="lazy" alt="合作伙伴" class="max-w-full h-auto">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-8">
+        <section class="py-20 bg-white" id="contact">
+            <div class="max-w-[1440px] w-full mx-auto px-8">
                 <div class="grid grid-cols-2 gap-16">
-                    <div>
+                    <div class="fade-in">
                         <h2 class="text-3xl font-bold mb-8">联系我们</h2>
                         <div class="space-y-6">
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                    <i class="fas fa-map-marker-alt text-primary" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold mb-2">公司地址</h3>
@@ -288,46 +486,48 @@
                             </div>
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-phone text-primary"></i>
+                                    <i class="fas fa-phone text-primary" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold mb-2">联系电话</h3>
-                                    <p class="text-gray-600">+86 574-88888888</p>
+                                    <p class="text-gray-600"><a href="tel:+8657488888888" class="hover:text-primary">+86 574-88888888</a></p>
                                 </div>
                             </div>
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-envelope text-primary"></i>
+                                    <i class="fas fa-envelope text-primary" aria-hidden="true"></i>
                                 </div>
                                 <div>
                                     <h3 class="text-lg font-semibold mb-2">电子邮箱</h3>
-                                    <p class="text-gray-600">business@smartappliance.com</p>
+                                    <p class="text-gray-600"><a href="mailto:business@smartappliance.com" class="hover:text-primary">business@smartappliance.com</a></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div class="fade-in">
                         <h2 class="text-3xl font-bold mb-8">订阅我们</h2>
                         <p class="text-gray-600 mb-6">订阅我们的电子报，获取最新产品信息和优惠活动</p>
-                        <div class="flex space-x-4 mb-6">
-                            <input type="email" placeholder="请输入您的邮箱" class="flex-1 px-4 py-3 border border-gray-200 rounded-button focus:outline-none focus:border-primary">
-                            <button class="!rounded-button px-8 py-3 bg-primary text-white hover:bg-primary/90 whitespace-nowrap">
-                                订阅
-                                <i class="fas fa-paper-plane ml-2"></i>
-                            </button>
-                        </div>
+                        <form class="mb-6">
+                            <div class="flex space-x-4">
+                                <input type="email" placeholder="请输入您的邮箱" aria-label="邮箱地址" required class="flex-1 px-4 py-3 border border-gray-200 rounded-button focus:outline-none focus:border-primary">
+                                <button type="submit" class="!rounded-button px-8 py-3 bg-primary text-white hover:bg-primary/90 whitespace-nowrap">
+                                    订阅
+                                    <i class="fas fa-paper-plane ml-2" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </form>
                         <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
-                                <i class="fab fa-facebook-f"></i>
+                            <a href="#" aria-label="Facebook" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
-                                <i class="fab fa-twitter"></i>
+                            <a href="#" aria-label="Twitter" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
-                                <i class="fab fa-linkedin-in"></i>
+                            <a href="#" aria-label="LinkedIn" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
-                                <i class="fab fa-instagram"></i>
+                            <a href="#" aria-label="Instagram" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -337,7 +537,7 @@
     </main>
 
     <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-8">
+        <div class="max-w-[1440px] w-full mx-auto px-8">
             <div class="grid grid-cols-4 gap-8 mb-12">
                 <div>
                     <h3 class="text-xl font-semibold mb-6">关于我们</h3>
@@ -444,6 +644,62 @@
         };
         salesChart.setOption(option);
 
+        // 菜单控制
+        document.addEventListener('DOMContentLoaded', function() {
+            // 确保移动菜单在页面加载时隐藏
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.style.transform = 'translateY(-100%)';
+            
+            // 确保只在移动端显示汉堡菜单按钮
+            const updateMenuVisibility = () => {
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                if (window.innerWidth > 1024) {
+                    mobileMenuBtn.style.display = 'none';
+                } else {
+                    mobileMenuBtn.style.display = 'flex';
+                }
+            };
+            
+            // 初始设置
+            updateMenuVisibility();
+            
+            // 窗口大小变化时更新
+            window.addEventListener('resize', updateMenuVisibility);
+            
+            // 菜单按钮点击事件
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // 页面加载时默认设置为英文
+            changeLang('en');
+        });
+
+        // 淡入动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+
         function animateValue(id, start, end, duration) {
             const obj = document.getElementById(id);
             let startTimestamp = null;
@@ -482,6 +738,428 @@
         window.addEventListener('resize', () => {
             salesChart.resize();
         });
+
+        // 语言切换功能
+        const translations = {
+            zh: {
+                nav: {
+                    products: "产品系列",
+                    about: "关于我们",
+                    news: "新闻中心",
+                    contact: "联系方式"
+                },
+                hero: {
+                    title: "智能科技 品质生活",
+                    subtitle: "致力于为全球用户提供高品质、智能化的小家电产品，让生活更简单、更美好。",
+                    button: "了解更多"
+                },
+                advantages: {
+                    title: "我们的优势",
+                    items: [
+                        {
+                            title: "品质保证",
+                            content: "严格的质量管控体系，获得多项国际认证，确保产品品质"
+                        },
+                        {
+                            title: "全球配送",
+                            content: "完善的物流网络，覆盖 150+ 个国家和地区"
+                        },
+                        {
+                            title: "专业服务",
+                            content: "7×24 小时在线客服，专业技术支持团队"
+                        },
+                        {
+                            title: "创新设计",
+                            content: "拥有 200+ 项专利技术，持续创新研发"
+                        }
+                    ]
+                },
+                products: {
+                    title: "产品系列",
+                    subtitle: "为您提供多样化的智能家电解决方案",
+                    categories: ["全部产品", "厨房电器", "生活电器", "个护健康"],
+                    items: [
+                        {
+                            title: "智能咖啡机 Pro",
+                            features: "多功能智能控制，19 bar 压力萃取，APP 远程操控",
+                            button: "了解详情"
+                        },
+                        {
+                            title: "智能空气炸锅",
+                            features: "大容量设计，8 种预设菜单，智能温控系统",
+                            button: "了解详情"
+                        },
+                        {
+                            title: "多功能料理机",
+                            features: "1200W 强劲动力，12 档速度调节，智能安全锁",
+                            button: "了解详情"
+                        }
+                    ]
+                },
+                strength: {
+                    title: "公司实力",
+                    subtitle: "持续创新，追求卓越",
+                    metrics: ["年销量（万台）", "覆盖国家", "专利数量", "服务客户（万）"]
+                },
+                partners: {
+                    title: "合作伙伴",
+                    subtitle: "携手共创美好未来"
+                },
+                contact: {
+                    title: "联系我们",
+                    address: {
+                        title: "公司地址",
+                        content: "浙江省宁波市鄞州区智能科技产业园区 A12 号楼"
+                    },
+                    phone: {
+                        title: "联系电话",
+                        content: "+86 574-88888888"
+                    },
+                    email: {
+                        title: "电子邮箱",
+                        content: "business@smartappliance.com"
+                    }
+                },
+                subscribe: {
+                    title: "订阅我们",
+                    subtitle: "订阅我们的电子报，获取最新产品信息和优惠活动",
+                    placeholder: "请输入您的邮箱",
+                    button: "订阅"
+                },
+                news: {
+                    title: "新闻中心",
+                    subtitle: "了解最新企业动态和行业资讯",
+                    items: [
+                        {
+                            date: "2024-06-10",
+                            title: "智家电器荣获年度创新企业奖项",
+                            content: "凭借在智能家电领域的突出贡献和创新成果，我司荣获2024年度创新企业奖",
+                            button: "阅读更多"
+                        },
+                        {
+                            date: "2024-05-28",
+                            title: "参与制定小家电行业标准",
+                            content: "我司技术专家参与制定新一代小家电能效标准，引领行业绿色发展",
+                            button: "阅读更多"
+                        },
+                        {
+                            date: "2024-05-15",
+                            title: "全新智能厨房系列产品发布",
+                            content: "智家电器发布全新一代智能厨房系列产品，搭载AI烹饪技术",
+                            button: "阅读更多"
+                        }
+                    ]
+                },
+                footer: {
+                    about: {
+                        title: "关于我们",
+                        links: ["公司简介", "发展历程", "企业文化", "荣誉资质"]
+                    },
+                    products: {
+                        title: "产品中心",
+                        links: ["厨房电器", "生活电器", "个护健康", "智能家居"]
+                    },
+                    service: {
+                        title: "服务支持",
+                        links: ["售后服务", "技术支持", "常见问题", "下载中心"]
+                    },
+                    contact: {
+                        title: "联系我们",
+                        links: ["联系方式", "招商合作", "人才招聘", "在线留言"]
+                    },
+                    copyright: "© 2024 智家电器 版权所有 浙ICP备12345678号"
+                }
+            },
+            en: {
+                nav: {
+                    products: "Products",
+                    about: "About Us",
+                    news: "News",
+                    contact: "Contact"
+                },
+                hero: {
+                    title: "Smart Technology, Quality Life",
+                    subtitle: "Committed to providing high-quality, intelligent home appliances for users worldwide, making life simpler and better.",
+                    button: "Learn More"
+                },
+                advantages: {
+                    title: "Our Advantages",
+                    items: [
+                        {
+                            title: "Quality Assurance",
+                            content: "Strict quality control system, multiple international certifications, ensuring product quality"
+                        },
+                        {
+                            title: "Global Delivery",
+                            content: "Comprehensive logistics network, covering 150+ countries and regions"
+                        },
+                        {
+                            title: "Professional Service",
+                            content: "24/7 online customer service, professional technical support team"
+                        },
+                        {
+                            title: "Innovative Design",
+                            content: "Over 200 patented technologies, continuous innovation and development"
+                        }
+                    ]
+                },
+                products: {
+                    title: "Product Range",
+                    subtitle: "Providing diversified smart home appliance solutions for you",
+                    categories: ["All Products", "Kitchen Appliances", "Home Appliances", "Personal Care"],
+                    items: [
+                        {
+                            title: "Smart Coffee Machine Pro",
+                            features: "Multi-function smart control, 19 bar pressure extraction, APP remote control",
+                            button: "Learn More"
+                        },
+                        {
+                            title: "Smart Air Fryer",
+                            features: "Large capacity design, 8 preset menus, intelligent temperature control system",
+                            button: "Learn More"
+                        },
+                        {
+                            title: "Multi-function Food Processor",
+                            features: "1200W powerful motor, 12-speed adjustment, intelligent safety lock",
+                            button: "Learn More"
+                        }
+                    ]
+                },
+                strength: {
+                    title: "Company Strength",
+                    subtitle: "Continuous Innovation, Pursuit of Excellence",
+                    metrics: ["Annual Sales (10,000 units)", "Countries Covered", "Number of Patents", "Customers Served (10,000)"]
+                },
+                partners: {
+                    title: "Partners",
+                    subtitle: "Working Together for a Better Future"
+                },
+                contact: {
+                    title: "Contact Us",
+                    address: {
+                        title: "Company Address",
+                        content: "Building A12, Intelligent Technology Industrial Park, Yinzhou District, Ningbo, Zhejiang Province"
+                    },
+                    phone: {
+                        title: "Contact Phone",
+                        content: "+86 574-88888888"
+                    },
+                    email: {
+                        title: "Email",
+                        content: "business@smartappliance.com"
+                    }
+                },
+                subscribe: {
+                    title: "Subscribe",
+                    subtitle: "Subscribe to our newsletter to get the latest product information and promotions",
+                    placeholder: "Please enter your email",
+                    button: "Subscribe"
+                },
+                footer: {
+                    about: {
+                        title: "About Us",
+                        links: ["Company Profile", "Development History", "Corporate Culture", "Honors & Qualifications"]
+                    },
+                    products: {
+                        title: "Products",
+                        links: ["Kitchen Appliances", "Home Appliances", "Personal Care", "Smart Home"]
+                    },
+                    service: {
+                        title: "Support",
+                        links: ["After-sales Service", "Technical Support", "FAQs", "Download Center"]
+                    },
+                    contact: {
+                        title: "Contact Us",
+                        links: ["Contact Information", "Business Cooperation", "Career", "Online Message"]
+                    },
+                    copyright: "© 2024 Smart Appliance All Rights Reserved. Zhejiang ICP No.12345678"
+                },
+                news: {
+                    title: "News Center",
+                    subtitle: "Learn about the latest company updates and industry information",
+                    items: [
+                        {
+                            date: "2024-06-10",
+                            title: "Smart Appliance Wins Annual Innovation Award",
+                            content: "With outstanding contributions and innovations in the smart home appliance field, our company won the 2024 Innovative Enterprise Award",
+                            button: "Read More"
+                        },
+                        {
+                            date: "2024-05-28",
+                            title: "Participating in Setting Small Appliance Industry Standards",
+                            content: "Our technical experts participated in the development of new generation small appliance energy efficiency standards, leading the industry's green development",
+                            button: "Read More"
+                        },
+                        {
+                            date: "2024-05-15",
+                            title: "New Smart Kitchen Series Products Released",
+                            content: "Smart Appliance releases a new generation of smart kitchen series products, equipped with AI cooking technology",
+                            button: "Read More"
+                        }
+                    ]
+                }
+            }
+        };
+
+        // 语言菜单控制
+        document.getElementById('langBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('langMenu').classList.toggle('active');
+        });
+
+        // 点击其他地方关闭语言菜单
+        document.addEventListener('click', function() {
+            document.getElementById('langMenu').classList.remove('active');
+        });
+
+        // 语言切换
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                document.querySelectorAll('.lang-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                this.classList.add('active');
+                document.getElementById('currentLang').textContent = lang === 'zh' ? '中文' : 'English';
+                changeLang(lang);
+            });
+        });
+
+        // 切换语言函数
+        function changeLang(lang) {
+            const t = translations[lang];
+            
+            // 更新HTML lang属性
+            document.documentElement.lang = lang;
+            
+            // 更新页面标题
+            document.title = lang === 'zh' ? 
+                "智家电器 - 全球领先的小家电制造商" : 
+                "Smart Appliance - Global Leading Small Home Appliance Manufacturer";
+            
+            // 更新元数据
+            document.querySelector('meta[name="description"]').setAttribute('content', 
+                lang === 'zh' ? 
+                "智家电器 - 全球领先的小家电制造商，提供智能咖啡机、空气炸锅等高品质智能家电产品" : 
+                "Smart Appliance - Global leading small home appliance manufacturer, providing high-quality smart coffee machines, air fryers and other products");
+            
+            // 导航菜单
+            const navLinks = document.querySelectorAll('.desktop-menu a, .mobile-menu a');
+            navLinks[0].textContent = t.nav.products;
+            navLinks[1].textContent = t.nav.about;
+            navLinks[2].textContent = t.nav.news;
+            navLinks[3].textContent = t.nav.contact;
+            navLinks[4].textContent = t.nav.products;
+            navLinks[5].textContent = t.nav.about;
+            navLinks[6].textContent = t.nav.news;
+            navLinks[7].textContent = t.nav.contact;
+            
+            // 英雄区域
+            document.querySelector('.hero-content h1').textContent = t.hero.title;
+            document.querySelector('.hero-content p').textContent = t.hero.subtitle;
+            document.querySelector('.hero-content button').innerHTML = t.hero.button + '<i class="fas fa-arrow-right ml-2"></i>';
+            
+            // 优势部分
+            const advantageTitles = document.querySelectorAll('section:nth-of-type(2) h3');
+            const advantageContents = document.querySelectorAll('section:nth-of-type(2) p');
+            document.querySelector('section:nth-of-type(2) h2').textContent = t.advantages.title;
+            for (let i = 0; i < 4; i++) {
+                advantageTitles[i].textContent = t.advantages.items[i].title;
+                advantageContents[i].textContent = t.advantages.items[i].content;
+            }
+            
+            // 产品部分
+            document.querySelector('#products h2').textContent = t.products.title;
+            document.querySelector('#products p').textContent = t.products.subtitle;
+            const productBtns = document.querySelectorAll('#products .flex.space-x-4 button');
+            for (let i = 0; i < productBtns.length; i++) {
+                productBtns[i].textContent = t.products.categories[i];
+            }
+            const productTitles = document.querySelectorAll('#products .grid-cols-3 h3');
+            const productFeatures = document.querySelectorAll('#products .grid-cols-3 p');
+            const productButtons = document.querySelectorAll('#products .grid-cols-3 button');
+            for (let i = 0; i < 3; i++) {
+                productTitles[i].textContent = t.products.items[i].title;
+                productFeatures[i].textContent = t.products.items[i].features;
+                productButtons[i].innerHTML = t.products.items[i].button + '<i class="fas fa-arrow-right ml-2"></i>';
+            }
+            
+            // 新闻中心部分
+            const newsSection = document.querySelector('#news').closest('section');
+            newsSection.querySelector('h2').textContent = t.news.title;
+            newsSection.querySelector('p').textContent = t.news.subtitle;
+            
+            const newsDates = newsSection.querySelectorAll('.text-sm.text-gray-500');
+            const newsTitles = newsSection.querySelectorAll('.p-6 h3');
+            const newsContents = newsSection.querySelectorAll('.p-6 > p');
+            const newsButtons = newsSection.querySelectorAll('.p-6 > a');
+            
+            for (let i = 0; i < 3; i++) {
+                newsDates[i].textContent = t.news.items[i].date;
+                newsTitles[i].textContent = t.news.items[i].title;
+                newsContents[i].textContent = t.news.items[i].content;
+                newsButtons[i].innerHTML = t.news.items[i].button + 
+                    '<i class="fas fa-arrow-right ml-2"></i>';
+            }
+            
+            // 公司实力部分
+            const strengthSection = document.querySelector('section:nth-of-type(4)');
+            strengthSection.querySelector('h2').textContent = t.strength.title;
+            strengthSection.querySelector('p').textContent = t.strength.subtitle;
+            const metricLabels = strengthSection.querySelectorAll('.grid-cols-4 p');
+            for (let i = 0; i < 4; i++) {
+                metricLabels[i].textContent = t.strength.metrics[i];
+            }
+            
+            // 合作伙伴部分
+            const partnersSection = document.querySelector('section:nth-of-type(5)');
+            partnersSection.querySelector('h2').textContent = t.partners.title;
+            partnersSection.querySelector('p').textContent = t.partners.subtitle;
+            
+            // 联系部分
+            document.querySelector('#contact .grid-cols-2 > div:first-child h2').textContent = t.contact.title;
+            const contactItems = document.querySelectorAll('#contact .space-y-6 h3');
+            contactItems[0].textContent = t.contact.address.title;
+            document.querySelector('#contact .space-y-6 > div:nth-child(1) p').textContent = t.contact.address.content;
+            contactItems[1].textContent = t.contact.phone.title;
+            document.querySelector('#contact .space-y-6 > div:nth-child(2) a').textContent = t.contact.phone.content;
+            contactItems[2].textContent = t.contact.email.title;
+            document.querySelector('#contact .space-y-6 > div:nth-child(3) a').textContent = t.contact.email.content;
+            
+            // 订阅部分
+            document.querySelector('#contact .grid-cols-2 > div:last-child h2').textContent = t.subscribe.title;
+            document.querySelector('#contact .grid-cols-2 > div:last-child > p').textContent = t.subscribe.subtitle;
+            document.querySelector('#contact input[type="email"]').placeholder = t.subscribe.placeholder;
+            document.querySelector('#contact button[type="submit"]').innerHTML = t.subscribe.button + '<i class="fas fa-paper-plane ml-2" aria-hidden="true"></i>';
+            
+            // 页脚部分
+            const footerTitles = document.querySelectorAll('footer h3');
+            footerTitles[0].textContent = t.footer.about.title;
+            footerTitles[1].textContent = t.footer.products.title;
+            footerTitles[2].textContent = t.footer.service.title;
+            footerTitles[3].textContent = t.footer.contact.title;
+            
+            const footerLinks = document.querySelectorAll('footer .grid-cols-4 > div');
+            for (let i = 0; i < 4; i++) {
+                footerLinks[0].querySelectorAll('a')[i].textContent = t.footer.about.links[i];
+                footerLinks[1].querySelectorAll('a')[i].textContent = t.footer.products.links[i];
+                footerLinks[2].querySelectorAll('a')[i].textContent = t.footer.service.links[i];
+                footerLinks[3].querySelectorAll('a')[i].textContent = t.footer.contact.links[i];
+            }
+            
+            document.querySelector('footer p').textContent = t.footer.copyright;
+            
+            // 更新搜索框 placeholder
+            document.querySelectorAll('input[placeholder="搜索产品..."]').forEach(input => {
+                input.placeholder = lang === 'zh' ? '搜索产品...' : 'Search products...';
+            });
+            
+            // 更新客服和回到顶部按钮的 aria-label
+            document.querySelector('.fixed.right-8.bottom-8 button:first-child').setAttribute('aria-label', 
+                lang === 'zh' ? '在线客服' : 'Online Support');
+            document.getElementById('backToTop').setAttribute('aria-label', 
+                lang === 'zh' ? '回到顶部' : 'Back to Top');
+        }
     </script>
 </body>
 </html>

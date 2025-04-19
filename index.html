@@ -1,614 +1,487 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智家电器 - 全球领先的小家电制造商</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#3B82F6',
+                    secondary: '#10B981'
+                },
+                borderRadius: {
+                    'none': '0px',
+                    'sm': '2px',
+                    DEFAULT: '4px',
+                    'md': '8px',
+                    'lg': '12px',
+                    'xl': '16px',
+                    '2xl': '20px',
+                    '3xl': '24px',
+                    'full': '9999px',
+                    'button': '4px'
+                }
+            }
+        }
     }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/">
-
-
-
-
-
-  <title>Hexo</title>
-  
-
-
-
-
-
-
-
-
+    </script>
+    <style>
+        body {
+            min-height: 1024px;
+            width: 1440px;
+            margin: 0 auto;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .brand-logo {
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        .brand-logo:hover {
+            filter: grayscale(0%);
+        }
+    </style>
 </head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
+<body>
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <nav class="flex items-center justify-between px-8 py-4 max-w-[1440px] mx-auto">
+            <div class="flex items-center">
+                <a href="/" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+            </div>
+            <div class="flex items-center space-x-8">
+                <a href="#products" class="nav-link text-gray-600 hover:text-primary">产品系列</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-primary">关于我们</a>
+                <a href="#news" class="nav-link text-gray-600 hover:text-primary">新闻中心</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-primary">联系方式</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="搜索产品..." class="pl-10 pr-4 py-2 border border-gray-200 rounded-button focus:outline-none focus:border-primary text-sm">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+                <button class="!rounded-button px-4 py-2 bg-primary text-white hover:bg-primary/90 whitespace-nowrap">
+                    <i class="fas fa-globe mr-2"></i>
+                    中文
+                </button>
+            </div>
+        </nav>
     </header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
+    <main class="mt-[72px]">
+        <section class="relative h-[600px] bg-gradient-to-r from-gray-50 to-white overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://ai-public.mastergo.com/ai/img_res/8007c16769d1e0a993630c0d930df2d1.jpg')]
+                bg-cover bg-center opacity-90"></div>
+            <div class="relative flex items-center h-full max-w-7xl mx-auto px-8">
+                <div class="w-1/2">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">智能科技 品质生活</h1>
+                    <p class="text-xl text-gray-600 mb-8">致力于为全球用户提供高品质、智能化的小家电产品，让生活更简单、更美好。</p>
+                    <button class="!rounded-button px-8 py-3 bg-primary text-white text-lg hover:bg-primary/90 whitespace-nowrap">
+                        了解更多
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-  
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-8">
+                <h2 class="text-3xl font-bold text-center mb-16">我们的优势</h2>
+                <div class="grid grid-cols-4 gap-8">
+                    <div class="text-center p-8 rounded-lg bg-gray-50">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-award text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">品质保证</h3>
+                        <p class="text-gray-600">严格的质量管控体系，获得多项国际认证，确保产品品质</p>
+                    </div>
+                    <div class="text-center p-8 rounded-lg bg-gray-50">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-globe-americas text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">全球配送</h3>
+                        <p class="text-gray-600">完善的物流网络，覆盖 150+ 个国家和地区</p>
+                    </div>
+                    <div class="text-center p-8 rounded-lg bg-gray-50">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-headset text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">专业服务</h3>
+                        <p class="text-gray-600">7×24 小时在线客服，专业技术支持团队</p>
+                    </div>
+                    <div class="text-center p-8 rounded-lg bg-gray-50">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-lightbulb text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">创新设计</h3>
+                        <p class="text-gray-600">拥有 200+ 项专利技术，持续创新研发</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  
-  
-  
+        <section class="py-20 bg-gray-50" id="products">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4">产品系列</h2>
+                    <p class="text-gray-600">为您提供多样化的智能家电解决方案</p>
+                </div>
+                <div class="flex justify-center mb-12">
+                    <div class="flex space-x-4">
+                        <button class="!rounded-button px-6 py-2 bg-primary text-white whitespace-nowrap">全部产品</button>
+                        <button class="!rounded-button px-6 py-2 bg-white text-gray-600 hover:bg-gray-100 whitespace-nowrap">厨房电器</button>
+                        <button class="!rounded-button px-6 py-2 bg-white text-gray-600 hover:bg-gray-100 whitespace-nowrap">生活电器</button>
+                        <button class="!rounded-button px-6 py-2 bg-white text-gray-600 hover:bg-gray-100 whitespace-nowrap">个护健康</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <div class="h-[300px] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/15d4358a161fab7c33c035e91856da89.jpg" 
+                                class="w-full h-full object-cover object-top" alt="智能咖啡机">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">智能咖啡机 Pro</h3>
+                            <p class="text-gray-600 mb-4">多功能智能控制，19 bar 压力萃取，APP 远程操控</p>
+                            <button class="!rounded-button w-full py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-colors whitespace-nowrap">
+                                了解详情
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <div class="h-[300px] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/ea82285843d77c417a3433354c3a4bf3.jpg" 
+                                class="w-full h-full object-cover object-top" alt="空气炸锅">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">智能空气炸锅</h3>
+                            <p class="text-gray-600 mb-4">大容量设计，8 种预设菜单，智能温控系统</p>
+                            <button class="!rounded-button w-full py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-colors whitespace-nowrap">
+                                了解详情
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <div class="h-[300px] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/63e192b9ce7460fd270203bb653d3fd5.jpg" 
+                                class="w-full h-full object-cover object-top" alt="料理机">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">多功能料理机</h3>
+                            <p class="text-gray-600 mb-4">1200W 强劲动力，12 档速度调节，智能安全锁</p>
+                            <button class="!rounded-button w-full py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-colors whitespace-nowrap">
+                                了解详情
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/git-强制覆盖本地文件/">
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4">公司实力</h2>
+                    <p class="text-gray-600">持续创新，追求卓越</p>
+                </div>
+                <div class="grid grid-cols-4 gap-8 mb-16">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary mb-2" id="salesCount">0</div>
+                        <p class="text-gray-600">年销量（万台）</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary mb-2" id="countries">0</div>
+                        <p class="text-gray-600">覆盖国家</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary mb-2" id="patents">0</div>
+                        <p class="text-gray-600">专利数量</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary mb-2" id="customers">0</div>
+                        <p class="text-gray-600">服务客户（万）</p>
+                    </div>
+                </div>
+                <div id="salesChart" class="w-full h-[400px]"></div>
+            </div>
+        </section>
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Xiaoming Yang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4">合作伙伴</h2>
+                    <p class="text-gray-600">携手共创美好未来</p>
+                </div>
+                <div class="grid grid-cols-6 gap-8">
+                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/21da20ed78987cce97ce0532c20ba942.jpg" 
+                            alt="合作伙伴" class="max-w-full h-auto">
+                    </div>
+                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/37a4050c1726970e55924271bd722d83.jpg" 
+                            alt="合作伙伴" class="max-w-full h-auto">
+                    </div>
+                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/4c7beb79b6d218d8d88eb5dee2602f85.jpg" 
+                            alt="合作伙伴" class="max-w-full h-auto">
+                    </div>
+                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/99c501eddede0ae388a0660be5f7ae35.jpg" 
+                            alt="合作伙伴" class="max-w-full h-auto">
+                    </div>
+                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/5d5656428bf836ac2ff744af30f85257.jpg" 
+                            alt="合作伙伴" class="max-w-full h-auto">
+                    </div>
+                    <div class="brand-logo bg-white p-8 rounded-lg flex items-center justify-center">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/7d9db0869d9bdde15174a2b9158f1a72.jpg" 
+                            alt="合作伙伴" class="max-w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/19/git-强制覆盖本地文件/" itemprop="url">git 强制覆盖本地文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T22:47:08+08:00">
-                2018-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch -all</span><br><span class="line">git reset --hard origin/master</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Xiaoming Yang</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="grid grid-cols-2 gap-16">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-8">联系我们</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-2">公司地址</h3>
+                                    <p class="text-gray-600">浙江省宁波市鄞州区智能科技产业园区 A12 号楼</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone text-primary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-2">联系电话</h3>
+                                    <p class="text-gray-600">+86 574-88888888</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-2">电子邮箱</h3>
+                                    <p class="text-gray-600">business@smartappliance.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold mb-8">订阅我们</h2>
+                        <p class="text-gray-600 mb-6">订阅我们的电子报，获取最新产品信息和优惠活动</p>
+                        <div class="flex space-x-4 mb-6">
+                            <input type="email" placeholder="请输入您的邮箱" class="flex-1 px-4 py-3 border border-gray-200 rounded-button focus:outline-none focus:border-primary">
+                            <button class="!rounded-button px-8 py-3 bg-primary text-white hover:bg-primary/90 whitespace-nowrap">
+                                订阅
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Xiaoming Yang</span>
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="grid grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">关于我们</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white">公司简介</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">发展历程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">企业文化</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">荣誉资质</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">产品中心</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white">厨房电器</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">生活电器</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">个护健康</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">智能家居</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">服务支持</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white">售后服务</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">技术支持</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">下载中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">联系我们</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white">联系方式</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">招商合作</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">人才招聘</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">在线留言</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-center text-gray-400">© 2024 智家电器 版权所有 浙ICP备12345678号</p>
+            </div>
+        </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
+    <div class="fixed right-8 bottom-8 z-50 flex flex-col space-y-4">
+        <button class="w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-primary/90">
+            <i class="fas fa-comments text-xl"></i>
+        </button>
+        <button class="w-12 h-12 bg-gray-800 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-700" id="backToTop">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+    </div>
+
+    <script>
+        const salesChart = echarts.init(document.getElementById('salesChart'));
+        const option = {
+            animation: false,
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: ['2018', '2019', '2020', '2021', '2022', '2023']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '年度销售额',
+                    type: 'line',
+                    smooth: true,
+                    data: [150, 230, 224, 318, 402, 500],
+                    lineStyle: {
+                        color: '#3B82F6'
+                    },
+                    itemStyle: {
+                        color: '#3B82F6'
+                    },
+                    areaStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0,
+                                color: 'rgba(59,130,246,0.2)'
+                            }, {
+                                offset: 1,
+                                color: 'rgba(59,130,246,0)'
+                            }]
+                        }
+                    }
+                }
+            ]
+        };
+        salesChart.setOption(option);
+
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue("salesCount", 0, 500, 2000);
+                    animateValue("countries", 0, 150, 2000);
+                    animateValue("patents", 0, 200, 2000);
+                    animateValue("customers", 0, 1000, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.getElementById("salesCount"));
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            salesChart.resize();
+        });
+    </script>
 </body>
 </html>
